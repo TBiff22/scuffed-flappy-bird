@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://q7esdsu65dta"]
+
+[ext_resource type="PackedScene" uid="uid://cp4j6u8ivg60i" path="res://scenes/player.tscn" id="1_it2yt"]
+[ext_resource type="Script" uid="uid://c165offd60hc" path="res://scripts/manager.gd" id="1_qsd30"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oeqib"]
+size = Vector2(60, 680.25)
+
+[node name="main game scene" type="Node2D" unique_id=1915544304]
+
+[node name="temp bg" type="Polygon2D" parent="." unique_id=1548330822]
+position = Vector2(204.30005, 29.363667)
+scale = Vector2(5.7125, 7.465909)
+color = Color(0.17103916, 0.17103916, 0.17103916, 1)
+polygon = PackedVector2Array(-152, -48, 88, -48, 88, 40, -144, 40, -152, 40)
+uv = PackedVector2Array(-152, -48, 88, -48, 88, 40, -144, 40, -144, 40)
+
+[node name="manager" type="Node" parent="." unique_id=1267492589]
+script = ExtResource("1_qsd30")
+
+[node name="Timer" type="Timer" parent="manager" unique_id=1763187622]
+wait_time = 2.5
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="manager" unique_id=1102422231]
+position = Vector2(800, 0)
+
+[node name="player" parent="." unique_id=452016814 instance=ExtResource("1_it2yt")]
+position = Vector2(-447, -18)
+scale = Vector2(0.5, 0.5)
+
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=1196398828]
+position = Vector2(894, 36)
+scale = Vector2(2, 2)
+limit_top = -325
+limit_bottom = 350
+
+[node name="spawner" type="Polygon2D" parent="." unique_id=1218784967]
+position = Vector2(822, 46)
+polygon = PackedVector2Array(-112, -56, -80, -56, -80, -24, -112, -24)
+uv = PackedVector2Array(-112, -56, -80, -56, -80, -24, -112, -24)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=996901194]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=307737254]
+position = Vector2(-814, 1)
+shape = SubResource("RectangleShape2D_oeqib")
+
+[connection signal="timeout" from="manager/Timer" to="manager" method="_on_timer_timeout"]
