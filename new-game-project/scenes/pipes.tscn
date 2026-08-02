@@ -25,7 +25,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_f17p0"]
 resource_name = "moving pipes"
-length = 5.9666667
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,10 +33,24 @@ tracks/0/path = NodePath("pipe colliders:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5.9666667),
+"times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-1400, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3ahhd"]
@@ -52,29 +66,30 @@ scale = Vector2(2, 2)
 script = ExtResource("1_f17p0")
 
 [node name="Polygon2D2" type="Polygon2D" parent="pipe colliders" unique_id=690317800]
-position = Vector2(-199.99997, -294)
+position = Vector2(-199.99997, -284)
 rotation = -3.1415925
 polygon = PackedVector2Array(-120, -64, -120.00003, 272, -80, 272, -80, -64, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
 uv = PackedVector2Array(-120, -64, -120, 80, -80, 80, -80, -64, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="pipe colliders" unique_id=2551986]
-position = Vector2(-99.99997, -397)
+position = Vector2(-99.99998, -387)
 shape = SubResource("RectangleShape2D_oso44")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="pipe colliders" unique_id=1895004398]
-position = Vector2(-99.99997, -218)
+position = Vector2(-99.99998, -208)
 shape = SubResource("RectangleShape2D_oeqib")
 
 [node name="Polygon2D" type="Polygon2D" parent="pipe colliders" unique_id=588540480]
+position = Vector2(-1.5258789e-05, -12.000008)
 polygon = PackedVector2Array(-120, -64, -120.00003, 272, -80, 272, -80, -64, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
 uv = PackedVector2Array(-120, -64, -120, 80, -80, 80, -80, -64, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pipe colliders" unique_id=1123451789]
-position = Vector2(-100, 103)
+position = Vector2(-100.000015, 90.99999)
 shape = SubResource("RectangleShape2D_oso44")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="pipe colliders" unique_id=1299331595]
-position = Vector2(-100, -76)
+position = Vector2(-100.000015, -88.00001)
 shape = SubResource("RectangleShape2D_oeqib")
 
 [node name="pipe animation" type="AnimationPlayer" parent="." unique_id=1224731482]

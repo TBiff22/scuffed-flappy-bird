@@ -19,7 +19,7 @@ uv = PackedVector2Array(-152, -48, 88, -48, 88, 40, -144, 40, -144, 40)
 script = ExtResource("1_qsd30")
 
 [node name="Timer" type="Timer" parent="manager" unique_id=1763187622]
-wait_time = 2.5
+wait_time = 1.5
 autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="manager" unique_id=1102422231]
