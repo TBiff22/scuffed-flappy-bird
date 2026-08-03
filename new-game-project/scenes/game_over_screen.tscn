@@ -3,6 +3,138 @@
 [ext_resource type="Script" uid="uid://31do7jdrbfsx" path="res://scripts/game_over_screen.gd" id="1_mcorn"]
 [ext_resource type="FontFile" uid="uid://coqaioosny7x8" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="1_pmlp8"]
 
+[sub_resource type="Animation" id="Animation_61w2s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("result text:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("replay button:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("replay button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("quit button:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("quit button:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jw6e5"]
+resource_name = "loading animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("result text:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("replay button:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("replay button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("quit button:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("quit button:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wa2qn"]
+_data = {
+&"RESET": SubResource("Animation_61w2s"),
+&"loading animation": SubResource("Animation_jw6e5")
+}
+
 [node name="game over screen" type="Control" unique_id=612593707]
 layout_mode = 3
 anchors_preset = 15
@@ -13,6 +145,7 @@ grow_vertical = 2
 script = ExtResource("1_mcorn")
 
 [node name="replay button" type="Button" parent="." unique_id=111532686]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -20,9 +153,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -760.0
-offset_top = -508.0
+offset_top = -412.0
 offset_right = -384.0
-offset_bottom = -326.0
+offset_bottom = -230.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_pmlp8")
@@ -30,6 +163,7 @@ theme_override_font_sizes/font_size = 64
 text = "replay"
 
 [node name="quit button" type="Button" parent="." unique_id=755648352]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -37,15 +171,32 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -880.0
-offset_top = -604.0
+offset_top = -528.0
 offset_right = -264.0
-offset_bottom = -417.0
+offset_bottom = -341.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_pmlp8")
 theme_override_font_sizes/font_size = 64
+disabled = true
 text = "quit to menu"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=570960402]
+
+[node name="result text" type="RichTextLabel" parent="." unique_id=1157845640]
+layout_mode = 0
+offset_left = -416.0
+offset_top = -264.0
+offset_right = 416.0
+offset_bottom = -216.0
+theme_override_fonts/normal_font = ExtResource("1_pmlp8")
+theme_override_font_sizes/normal_font_size = 48
+text = "test"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1903436787]
+libraries/ = SubResource("AnimationLibrary_wa2qn")
 
 [connection signal="pressed" from="replay button" to="." method="_on_replay_button_pressed"]

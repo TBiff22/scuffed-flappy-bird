@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://cm3ytx8ow81je"]
 
+[ext_resource type="Script" uid="uid://dodefksq5tktb" path="res://scenes/point_detector_2.gd" id="1_3ahhd"]
 [ext_resource type="Script" uid="uid://bq4ldqruwqwah" path="res://scripts/pipe_colliders.gd" id="1_f17p0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_no1ow"]
+size = Vector2(44, 96)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oeqib"]
+normal = Vector2(-1, 0)
+distance = 200.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oso44"]
 size = Vector2(40, 338)
@@ -13,7 +21,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("pipe colliders:position")
+tracks/0/path = NodePath("entire pipe:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,31 +34,31 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_f17p0"]
 resource_name = "moving pipes"
 length = 4.0
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("pipe colliders:position")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-1400, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("entire pipe:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1400, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3ahhd"]
@@ -61,34 +69,47 @@ _data = {
 
 [node name="pipes" type="Node2D" unique_id=181267812]
 
-[node name="pipe colliders" type="Area2D" parent="." unique_id=1335603282]
+[node name="entire pipe" type="Node2D" parent="." unique_id=1257447257]
+
+[node name="point detector2" type="Area2D" parent="entire pipe" unique_id=1382945774]
+script = ExtResource("1_3ahhd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entire pipe/point detector2" unique_id=1810295848]
+position = Vector2(-200, -296)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_no1ow")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="entire pipe/point detector2" unique_id=923949965]
+shape = SubResource("WorldBoundaryShape2D_oeqib")
+
+[node name="pipe colliders" type="Area2D" parent="entire pipe" unique_id=1335603282]
 scale = Vector2(2, 2)
 script = ExtResource("1_f17p0")
 
-[node name="Polygon2D2" type="Polygon2D" parent="pipe colliders" unique_id=690317800]
+[node name="Polygon2D2" type="Polygon2D" parent="entire pipe/pipe colliders" unique_id=690317800]
 position = Vector2(-199.99997, -284)
 rotation = -3.1415925
 polygon = PackedVector2Array(-120, -64, -120.00003, 272, -80, 272, -80, -64, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
 uv = PackedVector2Array(-120, -64, -120, 80, -80, 80, -80, -64, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="pipe colliders" unique_id=2551986]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="entire pipe/pipe colliders" unique_id=2551986]
 position = Vector2(-99.99998, -387)
 shape = SubResource("RectangleShape2D_oso44")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="pipe colliders" unique_id=1895004398]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="entire pipe/pipe colliders" unique_id=1895004398]
 position = Vector2(-99.99998, -208)
 shape = SubResource("RectangleShape2D_oeqib")
 
-[node name="Polygon2D" type="Polygon2D" parent="pipe colliders" unique_id=588540480]
+[node name="Polygon2D" type="Polygon2D" parent="entire pipe/pipe colliders" unique_id=588540480]
 position = Vector2(-1.5258789e-05, -12.000008)
 polygon = PackedVector2Array(-120, -64, -120.00003, 272, -80, 272, -80, -64, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
 uv = PackedVector2Array(-120, -64, -120, 80, -80, 80, -80, -64, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pipe colliders" unique_id=1123451789]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entire pipe/pipe colliders" unique_id=1123451789]
 position = Vector2(-100.000015, 90.99999)
 shape = SubResource("RectangleShape2D_oso44")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="pipe colliders" unique_id=1299331595]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="entire pipe/pipe colliders" unique_id=1299331595]
 position = Vector2(-100.000015, -88.00001)
 shape = SubResource("RectangleShape2D_oeqib")
 
@@ -96,4 +117,5 @@ shape = SubResource("RectangleShape2D_oeqib")
 libraries/ = SubResource("AnimationLibrary_3ahhd")
 autoplay = &"moving pipes"
 
-[connection signal="body_entered" from="pipe colliders" to="pipe colliders" method="_on_body_entered"]
+[connection signal="body_entered" from="entire pipe/point detector2" to="entire pipe/point detector2" method="_on_body_entered"]
+[connection signal="body_entered" from="entire pipe/pipe colliders" to="entire pipe/pipe colliders" method="_on_body_entered"]
