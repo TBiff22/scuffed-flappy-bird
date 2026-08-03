@@ -2,9 +2,142 @@
 
 [ext_resource type="PackedScene" uid="uid://cp4j6u8ivg60i" path="res://scenes/player.tscn" id="1_it2yt"]
 [ext_resource type="Script" uid="uid://c165offd60hc" path="res://scripts/manager.gd" id="1_qsd30"]
+[ext_resource type="Script" uid="uid://bbu6smfonb5xq" path="res://scenes/scoretext.gd" id="2_emqn2"]
+[ext_resource type="FontFile" uid="uid://coqaioosny7x8" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="3_d383n"]
+[ext_resource type="Script" uid="uid://dxvfufnkeklgu" path="res://scenes/killzone.gd" id="4_oa6bs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oeqib"]
-size = Vector2(60, 680.25)
+[sub_resource type="Animation" id="Animation_qsd30"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../manager/Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../manager/Camera2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("scoretext:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-450, -238)]
+}
+
+[sub_resource type="Animation" id="Animation_d383n"]
+resource_name = "dash_zoom"
+length = 0.56666666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../manager/Camera2D:zoom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../manager/Camera2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.49719122),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-60, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("scoretext:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-450, -238), Vector2(-510, -225)]
+}
+
+[sub_resource type="Animation" id="Animation_oa6bs"]
+resource_name = "dash_zoom_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../manager/Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../manager/Camera2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-60, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("scoretext:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-510, -225), Vector2(-450, -238)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oa6bs"]
+_data = {
+&"RESET": SubResource("Animation_qsd30"),
+&"dash_zoom": SubResource("Animation_d383n"),
+&"dash_zoom_out": SubResource("Animation_oa6bs")
+}
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_no1ow"]
+normal = Vector2(0.026872013, -0.99963886)
+distance = -909.95087
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oeqib"]
+distance = -428.0
 
 [node name="main game scene" type="Node2D" unique_id=1915544304]
 
@@ -25,25 +158,53 @@ autostart = true
 [node name="Marker2D" type="Marker2D" parent="manager" unique_id=1102422231]
 position = Vector2(800, 0)
 
-[node name="player" parent="." unique_id=452016814 instance=ExtResource("1_it2yt")]
-position = Vector2(-447, -18)
-scale = Vector2(0.5, 0.5)
-
-[node name="Camera2D" type="Camera2D" parent="player" unique_id=1196398828]
-position = Vector2(894, 36)
-scale = Vector2(2, 2)
+[node name="Camera2D" type="Camera2D" parent="manager" unique_id=1196398828]
 limit_top = -325
 limit_bottom = 350
 
-[node name="spawner" type="Polygon2D" parent="." unique_id=1218784967]
-position = Vector2(822, 46)
-polygon = PackedVector2Array(-112, -56, -80, -56, -80, -24, -112, -24)
-uv = PackedVector2Array(-112, -56, -80, -56, -80, -24, -112, -24)
+[node name="scoretext" type="RichTextLabel" parent="manager" unique_id=1560433746]
+anchors_preset = -1
+anchor_right = 0.5
+offset_left = -450.0
+offset_top = -238.0
+offset_right = -126.0
+offset_bottom = -173.0
+grow_horizontal = 2
+scale = Vector2(0.97, 0.97)
+theme_override_fonts/normal_font = ExtResource("3_d383n")
+theme_override_font_sizes/normal_font_size = 48
+text = "0"
+horizontal_alignment = 1
+script = ExtResource("2_emqn2")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=996901194]
+[node name="camera animation" type="AnimationPlayer" parent="manager" unique_id=914870545]
+libraries/ = SubResource("AnimationLibrary_oa6bs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=307737254]
-position = Vector2(-814, 1)
-shape = SubResource("RectangleShape2D_oeqib")
+[node name="player" parent="." unique_id=452016814 instance=ExtResource("1_it2yt")]
+position = Vector2(-447, -18)
+scale = Vector2(0.5, 0.5)
+collision_layer = 3
+collision_mask = 3
+
+[node name="upper_bound" type="StaticBody2D" parent="." unique_id=944824458]
+position = Vector2(-447, -18)
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="upper_bound" unique_id=1064980604]
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_no1ow")
+
+[node name="killzone" type="Area2D" parent="." unique_id=1542671468]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_oa6bs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=1106740404]
+position = Vector2(0, 138)
+shape = SubResource("WorldBoundaryShape2D_oeqib")
 
 [connection signal="timeout" from="manager/Timer" to="manager" method="_on_timer_timeout"]
+[connection signal="body_entered" from="killzone" to="manager" method="_on_killzone_body_entered"]
+[connection signal="body_entered" from="killzone" to="killzone" method="_on_body_entered"]
