@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://q7esdsu65dta"]
 
+[ext_resource type="Texture2D" uid="uid://cpfu5i6ni6tbc" path="res://assets/background.png" id="1_ilxj7"]
 [ext_resource type="PackedScene" uid="uid://cp4j6u8ivg60i" path="res://scenes/player.tscn" id="1_it2yt"]
 [ext_resource type="Script" uid="uid://c165offd60hc" path="res://scripts/manager.gd" id="1_qsd30"]
-[ext_resource type="Script" uid="uid://bbu6smfonb5xq" path="res://scenes/scoretext.gd" id="2_emqn2"]
+[ext_resource type="Script" uid="uid://bbu6smfonb5xq" path="res://scripts/scoretext.gd" id="2_emqn2"]
+[ext_resource type="Script" uid="uid://cekqv1le4d18u" path="res://scenes/camera_2d.gd" id="2_snln7"]
 [ext_resource type="FontFile" uid="uid://coqaioosny7x8" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="3_d383n"]
-[ext_resource type="Script" uid="uid://dxvfufnkeklgu" path="res://scenes/killzone.gd" id="4_oa6bs"]
+[ext_resource type="Script" uid="uid://dxvfufnkeklgu" path="res://scripts/killzone.gd" id="4_oa6bs"]
+[ext_resource type="Script" uid="uid://dtuva63de4txc" path="res://scenes/camera_animation.gd" id="5_4a4v8"]
+[ext_resource type="Script" uid="uid://bwoa741ljfl4f" path="res://scenes/animation_tree.gd" id="6_ef5fi"]
 
 [sub_resource type="Animation" id="Animation_qsd30"]
 length = 0.001
@@ -44,15 +48,50 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(-450, -238)]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../player")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../background:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../background:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
 
 [sub_resource type="Animation" id="Animation_d383n"]
 resource_name = "dash_zoom"
-length = 0.56666666
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("../manager/Camera2D:zoom")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
@@ -83,6 +122,44 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-450, -238), Vector2(-510, -225)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../player")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_dash"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../background:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-120, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../background:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(0.57, 0.57)]
 }
 
 [sub_resource type="Animation" id="Animation_oa6bs"]
@@ -124,6 +201,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(-510, -225), Vector2(-450, -238)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../background:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-120, 0), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../background:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.57, 0.57), Vector2(0.6, 0.6)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oa6bs"]
 _data = {
@@ -131,6 +232,44 @@ _data = {
 &"dash_zoom": SubResource("Animation_d383n"),
 &"dash_zoom_out": SubResource("Animation_oa6bs")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i4o3e"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4a4v8"]
+animation = &"dash_zoom"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ef5fi"]
+animation = &"dash_zoom_out"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i4o3e"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u2xxy"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cofsh"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qwe6u"]
+
+[sub_resource type="Curve" id="Curve_ef5fi"]
+_data = [Vector2(0, 0), 0.0, 5.323287, 0, 0, Vector2(0.16915423, 0.47397262), 1.3389199, 1.3389199, 0, 0, Vector2(0.5522388, 0.83561647), 0.5344882, 0.5344882, 0, 0, Vector2(1, 0.98630136), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ef5fi"]
+xfade_time = 1.0
+xfade_curve = SubResource("Curve_ef5fi")
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_oeqib"]
+states/RESET/node = SubResource("AnimationNodeAnimation_i4o3e")
+states/RESET/position = Vector2(472.34, 196.8625)
+states/Start/position = Vector2(208.5, 101.5)
+states/dash_zoom/node = SubResource("AnimationNodeAnimation_4a4v8")
+states/dash_zoom/position = Vector2(382, 85)
+states/dash_zoom_out/node = SubResource("AnimationNodeAnimation_ef5fi")
+states/dash_zoom_out/position = Vector2(598, 83.25)
+transitions = ["dash_zoom", "dash_zoom_out", SubResource("AnimationNodeStateMachineTransition_i4o3e"), "Start", "dash_zoom", SubResource("AnimationNodeStateMachineTransition_u2xxy"), "dash_zoom_out", "RESET", SubResource("AnimationNodeStateMachineTransition_cofsh"), "RESET", "dash_zoom", SubResource("AnimationNodeStateMachineTransition_qwe6u"), "dash_zoom", "RESET", SubResource("AnimationNodeStateMachineTransition_ef5fi")]
+graph_offset = Vector2(78.84, 18.8625)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_no1ow"]
 normal = Vector2(0.026872013, -0.99963886)
@@ -140,13 +279,6 @@ distance = -909.95087
 distance = -428.0
 
 [node name="main game scene" type="Node2D" unique_id=1915544304]
-
-[node name="temp bg" type="Polygon2D" parent="." unique_id=1548330822]
-position = Vector2(204.30005, 29.363667)
-scale = Vector2(5.7125, 7.465909)
-color = Color(0.17103916, 0.17103916, 0.17103916, 1)
-polygon = PackedVector2Array(-152, -48, 88, -48, 88, 40, -144, 40, -152, 40)
-uv = PackedVector2Array(-152, -48, 88, -48, 88, 40, -144, 40, -144, 40)
 
 [node name="manager" type="Node" parent="." unique_id=1267492589]
 script = ExtResource("1_qsd30")
@@ -161,6 +293,7 @@ position = Vector2(800, 0)
 [node name="Camera2D" type="Camera2D" parent="manager" unique_id=1196398828]
 limit_top = -325
 limit_bottom = 350
+script = ExtResource("2_snln7")
 
 [node name="scoretext" type="RichTextLabel" parent="manager" unique_id=1560433746]
 anchors_preset = -1
@@ -179,12 +312,12 @@ script = ExtResource("2_emqn2")
 
 [node name="camera animation" type="AnimationPlayer" parent="manager" unique_id=914870545]
 libraries/ = SubResource("AnimationLibrary_oa6bs")
+script = ExtResource("5_4a4v8")
 
-[node name="player" parent="." unique_id=452016814 instance=ExtResource("1_it2yt")]
-position = Vector2(-447, -18)
-scale = Vector2(0.5, 0.5)
-collision_layer = 3
-collision_mask = 3
+[node name="AnimationTree" type="AnimationTree" parent="manager" unique_id=763192478]
+tree_root = SubResource("AnimationNodeStateMachine_oeqib")
+anim_player = NodePath("../camera animation")
+script = ExtResource("6_ef5fi")
 
 [node name="upper_bound" type="StaticBody2D" parent="." unique_id=944824458]
 position = Vector2(-447, -18)
@@ -196,6 +329,12 @@ collision_mask = 2
 rotation = 3.1415927
 shape = SubResource("WorldBoundaryShape2D_no1ow")
 
+[node name="player" parent="." unique_id=452016814 instance=ExtResource("1_it2yt")]
+position = Vector2(-447, -18)
+scale = Vector2(0.5, 0.5)
+collision_layer = 3
+collision_mask = 3
+
 [node name="killzone" type="Area2D" parent="." unique_id=1542671468]
 collision_layer = 2
 collision_mask = 2
@@ -204,6 +343,10 @@ script = ExtResource("4_oa6bs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=1106740404]
 position = Vector2(0, 138)
 shape = SubResource("WorldBoundaryShape2D_oeqib")
+
+[node name="background" type="Sprite2D" parent="." unique_id=814025493]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_ilxj7")
 
 [connection signal="timeout" from="manager/Timer" to="manager" method="_on_timer_timeout"]
 [connection signal="body_entered" from="killzone" to="manager" method="_on_killzone_body_entered"]
