@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dbiehmt4ogs4u"]
+
+[ext_resource type="Texture2D" uid="uid://cpfu5i6ni6tbc" path="res://assets/background.png" id="1_cfwqx"]
+[ext_resource type="PackedScene" uid="uid://q7esdsu65dta" path="res://scenes/main_game_scene.tscn" id="2_xdhq4"]
+
+[node name="game plus extras" type="Node2D" unique_id=1930423959]
+
+[node name="background" type="Sprite2D" parent="." unique_id=675366264]
+z_index = -1
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_cfwqx")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1881347756]
+
+[node name="main game scene" parent="Camera2D" unique_id=1915544304 instance=ExtResource("2_xdhq4")]
