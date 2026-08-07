@@ -1,4 +1,5 @@
 extends Control
+
 @onready var result_text: RichTextLabel = $"result text"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -18,3 +19,10 @@ func _on_replay_button_pressed() -> void:
 		Globals.high_score = Globals.score
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+func despawner():
+	Globals.despawn_score_text.emit()
+
+func _on_quit_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/start.tscn")

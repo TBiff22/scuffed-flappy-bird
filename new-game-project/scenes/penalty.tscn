@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://hdbbqyacnn6j"]
+
+[ext_resource type="FontFile" uid="uid://coqaioosny7x8" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="1_6kv5l"]
+[ext_resource type="Script" uid="uid://xya32irn8u2g" path="res://penalty.gd" id="2_b1xc5"]
+
+[node name="penalty" type="RichTextLabel" unique_id=1183517032]
+clip_contents = false
+offset_left = -48.0
+offset_top = -232.0
+offset_right = 64.0
+offset_bottom = -152.0
+theme_override_fonts/normal_font = ExtResource("1_6kv5l")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "-10
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_b1xc5")
