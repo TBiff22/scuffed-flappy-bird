@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dxvfufnkeklgu" path="res://scripts/killzone.gd" id="4_oa6bs"]
 [ext_resource type="Script" uid="uid://dtuva63de4txc" path="res://scripts/camera_animation.gd" id="5_4a4v8"]
 [ext_resource type="Script" uid="uid://bwoa741ljfl4f" path="res://scripts/animation_tree.gd" id="6_ef5fi"]
+[ext_resource type="Script" uid="uid://cj3xwx4y6efdv" path="res://scripts/player_pos_track.gd" id="8_i4o3e"]
 
 [sub_resource type="Animation" id="Animation_qsd30"]
 length = 0.001
@@ -350,6 +351,7 @@ collision_mask = 3
 
 [node name="player_pos_track" type="Marker2D" parent="player" unique_id=1877983071]
 position = Vector2(-500, -50)
+script = ExtResource("8_i4o3e")
 
 [node name="killzone" type="Area2D" parent="." unique_id=1542671468]
 collision_layer = 2
