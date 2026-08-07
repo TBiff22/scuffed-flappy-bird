@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://kps5f8ma8kxt"]
+
+[ext_resource type="Script" uid="uid://dpo6boohpk6aq" path="res://start.gd" id="1_u80x2"]
+[ext_resource type="FontFile" uid="uid://coqaioosny7x8" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="2_bodal"]
+
+[node name="start" type="Control" unique_id=1832351642]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u80x2")
+
+[node name="start button" type="Button" parent="." unique_id=58394351]
+layout_mode = 0
+offset_left = -293.0
+offset_top = -204.0
+offset_right = 306.0
+offset_bottom = -4.0
+theme_override_fonts/font = ExtResource("2_bodal")
+theme_override_font_sizes/font_size = 64
+text = "Click here to start the game"
+autowrap_mode = 3
+
+[node name="instructions button" type="Button" parent="." unique_id=665160323]
+layout_mode = 0
+offset_left = -459.0
+offset_top = 108.0
+offset_right = 484.0
+offset_bottom = 244.0
+theme_override_fonts/font = ExtResource("2_bodal")
+theme_override_font_sizes/font_size = 64
+text = "click here to read instructions"
+autowrap_mode = 3
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1048282253]
+
+[connection signal="pressed" from="start button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="instructions button" to="." method="_on_instructions_button_pressed"]

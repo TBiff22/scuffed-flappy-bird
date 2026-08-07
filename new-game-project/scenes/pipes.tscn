@@ -4,21 +4,35 @@
 [ext_resource type="Script" uid="uid://bq4ldqruwqwah" path="res://scripts/pipe_colliders.gd" id="1_f17p0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_no1ow"]
-size = Vector2(44, 96)
+size = Vector2(30, 112)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oeqib"]
 normal = Vector2(-1, 0)
 distance = 200.0
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_prsvi"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3ahhd"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_oeqib"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qo702"]
+
+[sub_resource type="Gradient" id="Gradient_3ahhd"]
+offsets = PackedFloat32Array(0, 0.6201299, 0.9415584)
+colors = PackedColorArray(0, 0, 0, 1, 0.22543356, 0.22543356, 0.22543356, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yjgfw"]
+gradient = SubResource("Gradient_3ahhd")
+width = 200
+fill_from = Vector2(0, 0.014334862)
+fill_to = Vector2(0.8142202, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oso44"]
-size = Vector2(40, 338)
+size = Vector2(24, 340)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oeqib"]
-size = Vector2(52, 20)
+size = Vector2(46.25, 13.999992)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v53nb"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cofsh"]
 
 [sub_resource type="Animation" id="Animation_f71w0"]
 length = 0.001
@@ -79,7 +93,7 @@ _data = {
 script = ExtResource("1_3ahhd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="entire pipe/point detector2" unique_id=1810295848]
-position = Vector2(-200, -296)
+position = Vector2(-208, -312)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_no1ow")
 
@@ -90,40 +104,79 @@ shape = SubResource("WorldBoundaryShape2D_oeqib")
 scale = Vector2(2, 2)
 script = ExtResource("1_f17p0")
 
-[node name="Polygon2D2" type="Polygon2D" parent="entire pipe/pipe colliders" unique_id=690317800]
-material = SubResource("CanvasItemMaterial_prsvi")
-position = Vector2(-199.99997, -284)
+[node name="Polygon2D4" type="Polygon2D" parent="entire pipe/pipe colliders" unique_id=676869028]
+material = SubResource("CanvasItemMaterial_3ahhd")
+position = Vector2(-205.00002, -311.5)
 rotation = -3.1415925
+scale = Vector2(1.05, 1.15)
+color = Color(0, 0, 0, 1)
+texture = SubResource("CanvasTexture_oeqib")
+texture_offset = Vector2(25, 0)
+texture_rotation = 3.1415927
+polygon = PackedVector2Array(-120.4762, -63.913048, -120.4762, 271.73914, -79.52381, 271.73914, -79.52381, -63.913048, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
+uv = PackedVector2Array(-120, -64, -120, 80, -80, 80, -80, -64, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
+
+[node name="Polygon2D2" type="Polygon2D" parent="entire pipe/pipe colliders" unique_id=690317800]
+material = SubResource("CanvasItemMaterial_qo702")
+position = Vector2(-200, -300)
+rotation = -3.1415925
+texture = SubResource("GradientTexture2D_yjgfw")
+texture_offset = Vector2(225, 0)
 polygon = PackedVector2Array(-120, -64, -120.00003, 272, -80, 272, -80, -64, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
 uv = PackedVector2Array(-120, -64, -120, 80, -80, 80, -80, -64, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="entire pipe/pipe colliders" unique_id=2551986]
-visible = false
 position = Vector2(-99.99998, -387)
 shape = SubResource("RectangleShape2D_oso44")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="entire pipe/pipe colliders" unique_id=1895004398]
-visible = false
-position = Vector2(-99.99998, -208)
+position = Vector2(-101.75, -224)
 shape = SubResource("RectangleShape2D_oeqib")
 
+[node name="Polygon2D3" type="Polygon2D" parent="entire pipe/pipe colliders" unique_id=1460461772]
+material = SubResource("CanvasItemMaterial_3ahhd")
+position = Vector2(5, -0.5)
+scale = Vector2(1.05, 1.15)
+color = Color(0, 0, 0, 1)
+texture = SubResource("CanvasTexture_oeqib")
+texture_offset = Vector2(25, 0)
+texture_rotation = 3.1415927
+polygon = PackedVector2Array(-120.4762, -63.913048, -120.4762, 271.73914, -79.52381, 271.73914, -79.52381, -63.913048, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
+uv = PackedVector2Array(-120, -64, -120, 80, -80, 80, -80, -64, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
+
 [node name="Polygon2D" type="Polygon2D" parent="entire pipe/pipe colliders" unique_id=588540480]
-material = SubResource("CanvasItemMaterial_v53nb")
+material = SubResource("CanvasItemMaterial_cofsh")
 position = Vector2(-1.5258789e-05, -12.000008)
+texture = SubResource("GradientTexture2D_yjgfw")
+texture_offset = Vector2(25, 0)
+texture_rotation = 3.1415927
 polygon = PackedVector2Array(-120, -64, -120.00003, 272, -80, 272, -80, -64, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
 uv = PackedVector2Array(-120, -64, -120, 80, -80, 80, -80, -64, -71.99999, -63.999992, -71.99999, -87.99999, -127.999985, -87.99999, -127.999985, -63.999992)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="entire pipe/pipe colliders" unique_id=1123451789]
-position = Vector2(-100.000015, 90.99999)
+position = Vector2(-100, 89.99999)
 shape = SubResource("RectangleShape2D_oso44")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="entire pipe/pipe colliders" unique_id=1299331595]
-position = Vector2(-100.000015, -88.00001)
+position = Vector2(-101.375, -88)
 shape = SubResource("RectangleShape2D_oeqib")
+
+[node name="Polygon2D5" type="Polygon2D" parent="entire pipe/pipe colliders" unique_id=1484997610]
+position = Vector2(-21, -10.5)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-102, -64, -56, -63.999992, -56, -61.999992, -102, -62.000004)
+uv = PackedVector2Array(-112, -64, 0, -64, 0, -56, -112, -56)
+
+[node name="Polygon2D6" type="Polygon2D" parent="entire pipe/pipe colliders" unique_id=450808832]
+position = Vector2(-21, -176)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-102, -64, -56, -63.999992, -56, -61.999992, -102, -62)
+uv = PackedVector2Array(-112, -64, 0, -64, 0, -56, -112, -56)
 
 [node name="pipe animation" type="AnimationPlayer" parent="." unique_id=1224731482]
 libraries/ = SubResource("AnimationLibrary_3ahhd")
 autoplay = &"moving pipes"
 
 [connection signal="body_entered" from="entire pipe/point detector2" to="entire pipe/point detector2" method="_on_body_entered"]
+[connection signal="body_exited" from="entire pipe/point detector2" to="entire pipe/point detector2" method="_on_body_exited"]
 [connection signal="body_entered" from="entire pipe/pipe colliders" to="entire pipe/pipe colliders" method="_on_body_entered"]

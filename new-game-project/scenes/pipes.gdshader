@@ -1,4 +1,5 @@
 shader_type canvas_item;
+
 uniform vec4 first_color = vec4(1.0);
 uniform vec4 second_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform float position : hint_range(-0.5, 0.5) = 0.0;

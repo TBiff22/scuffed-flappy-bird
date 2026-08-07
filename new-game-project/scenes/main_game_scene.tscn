@@ -4,11 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://cp4j6u8ivg60i" path="res://scenes/player.tscn" id="1_it2yt"]
 [ext_resource type="Script" uid="uid://c165offd60hc" path="res://scripts/manager.gd" id="1_qsd30"]
 [ext_resource type="Script" uid="uid://bbu6smfonb5xq" path="res://scripts/scoretext.gd" id="2_emqn2"]
-[ext_resource type="Script" uid="uid://cekqv1le4d18u" path="res://scenes/camera_2d.gd" id="2_snln7"]
+[ext_resource type="Script" uid="uid://cekqv1le4d18u" path="res://scripts/camera_2d.gd" id="2_snln7"]
 [ext_resource type="FontFile" uid="uid://coqaioosny7x8" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="3_d383n"]
 [ext_resource type="Script" uid="uid://dxvfufnkeklgu" path="res://scripts/killzone.gd" id="4_oa6bs"]
-[ext_resource type="Script" uid="uid://dtuva63de4txc" path="res://scenes/camera_animation.gd" id="5_4a4v8"]
-[ext_resource type="Script" uid="uid://bwoa741ljfl4f" path="res://scenes/animation_tree.gd" id="6_ef5fi"]
+[ext_resource type="Script" uid="uid://dtuva63de4txc" path="res://scripts/camera_animation.gd" id="5_4a4v8"]
+[ext_resource type="Script" uid="uid://bwoa741ljfl4f" path="res://scripts/animation_tree.gd" id="6_ef5fi"]
+[ext_resource type="Script" uid="uid://cj3xwx4y6efdv" path="res://scripts/player_pos_track.gd" id="8_i4o3e"]
 
 [sub_resource type="Animation" id="Animation_qsd30"]
 length = 0.001
@@ -130,7 +131,7 @@ tracks/3/path = NodePath("../player")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.5),
+"times": PackedFloat32Array(0.46666667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -160,6 +161,20 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0.6, 0.6), Vector2(0.57, 0.57)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_dashing"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_oa6bs"]
@@ -246,7 +261,6 @@ animation = &"dash_zoom_out"
 switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u2xxy"]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cofsh"]
 
@@ -334,6 +348,10 @@ position = Vector2(-447, -18)
 scale = Vector2(0.5, 0.5)
 collision_layer = 3
 collision_mask = 3
+
+[node name="player_pos_track" type="Marker2D" parent="player" unique_id=1877983071]
+position = Vector2(-500, -50)
+script = ExtResource("8_i4o3e")
 
 [node name="killzone" type="Area2D" parent="." unique_id=1542671468]
 collision_layer = 2

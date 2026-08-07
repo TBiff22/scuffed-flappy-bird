@@ -1015,7 +1015,6 @@ animation = &"jump"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qhqgy"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dqkch"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qlg0r"]
 switch_mode = 2
@@ -1024,9 +1023,13 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tuyoq"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fjrip"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smehm"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_njo0q"]
 states/RESET/node = SubResource("AnimationNodeAnimation_qhqgy")
-states/RESET/position = Vector2(230.71262, 177.955)
+states/RESET/position = Vector2(176.71262, 177.455)
 states/Start/position = Vector2(78, 118.81344)
 states/dash_invincible/node = SubResource("AnimationNodeAnimation_dqkch")
 states/dash_invincible/position = Vector2(314.5, -65)
@@ -1040,8 +1043,8 @@ states/fall/node = SubResource("AnimationNodeAnimation_smehm")
 states/fall/position = Vector2(62, -42)
 states/jump/node = SubResource("AnimationNodeAnimation_ur7pv")
 states/jump/position = Vector2(394, 116.9229)
-transitions = ["fall", "jump", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "fall", "dash_invincible", SubResource("AnimationNodeStateMachineTransition_3v2ag"), "jump", "dash_invincible", SubResource("AnimationNodeStateMachineTransition_jej6c"), "dash_invincible", "fall", SubResource("AnimationNodeStateMachineTransition_f1ej7"), "dash_invincible", "jump", SubResource("AnimationNodeStateMachineTransition_oprun"), "jump", "dash_normal", SubResource("AnimationNodeStateMachineTransition_a8ls1"), "dash_normal", "fall", SubResource("AnimationNodeStateMachineTransition_qfm1y"), "fall", "dash_normal", SubResource("AnimationNodeStateMachineTransition_fulsm"), "dash_normal", "death_dash", SubResource("AnimationNodeStateMachineTransition_4r5pv"), "jump", "death_norma", SubResource("AnimationNodeStateMachineTransition_60mlk"), "fall", "death_norma", SubResource("AnimationNodeStateMachineTransition_i4ail"), "RESET", "jump", SubResource("AnimationNodeStateMachineTransition_4ni07"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_qhqgy"), "RESET", "fall", SubResource("AnimationNodeStateMachineTransition_dqkch"), "jump", "RESET", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "Start", "fall", SubResource("AnimationNodeStateMachineTransition_tuyoq")]
-graph_offset = Vector2(-319.73996, -82.994995)
+transitions = ["fall", "jump", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "fall", "dash_invincible", SubResource("AnimationNodeStateMachineTransition_3v2ag"), "jump", "dash_invincible", SubResource("AnimationNodeStateMachineTransition_jej6c"), "dash_invincible", "fall", SubResource("AnimationNodeStateMachineTransition_f1ej7"), "dash_invincible", "jump", SubResource("AnimationNodeStateMachineTransition_oprun"), "jump", "dash_normal", SubResource("AnimationNodeStateMachineTransition_a8ls1"), "dash_normal", "fall", SubResource("AnimationNodeStateMachineTransition_qfm1y"), "fall", "dash_normal", SubResource("AnimationNodeStateMachineTransition_fulsm"), "dash_normal", "death_dash", SubResource("AnimationNodeStateMachineTransition_4r5pv"), "jump", "death_norma", SubResource("AnimationNodeStateMachineTransition_60mlk"), "fall", "death_norma", SubResource("AnimationNodeStateMachineTransition_i4ail"), "RESET", "jump", SubResource("AnimationNodeStateMachineTransition_4ni07"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_qhqgy"), "RESET", "fall", SubResource("AnimationNodeStateMachineTransition_dqkch"), "jump", "RESET", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "Start", "fall", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "dash_normal", "RESET", SubResource("AnimationNodeStateMachineTransition_fjrip"), "dash_invincible", "RESET", SubResource("AnimationNodeStateMachineTransition_smehm")]
+graph_offset = Vector2(55.950115, 7.5450044)
 
 [node name="player" type="CharacterBody2D" unique_id=452016814]
 z_index = 1
